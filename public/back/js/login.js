@@ -8,7 +8,7 @@ $(function(){
 
    
 
-
+  //使用插件来进行效验 提供效验的要求可以来实现 并且可以添加图标
   $("#form").bootstrapValidator({
 
      //2. 指定校验时的图标显示，默认是bootstrap风格
@@ -32,6 +32,9 @@ $(function(){
             min:2,
             max:6,
             message:"用户名长度必须是2-6位"
+          },
+          callback: {
+            message: "用户名不存在"
           }
         }
       },
@@ -44,9 +47,53 @@ $(function(){
             min: 6,
             max: 12,
             message: "密码长度必须是6-12位"
+          },
+          callback: {
+            message: "密码错误"
           }
         }
       }
     }
   })
+
+//当效验成功时 需要先阻止表单的默认提交功能 再通过ajax来进行提交
+//表单中有默认的提交功能 需要阻止其默认行为，然后通过ajax来发送请求数据 成功就跳转到首页
+  $("#form").on("success.form.bv",function(e) {
+    
+    e.preventDefault();
+    $.ajax({
+      type:"post",
+      url:"/employee/employeeLogin",
+      //通过表单序列化来获取表单元素
+  
+      data:$("#form").serialize(),
+      dataType:"json",
+      success:function(info){
+        // console.log(info);
+        if(info.success){
+          //登陆成功应该跳转到首页
+          location.href="index.html";
+        }
+        if(info.error===1000){
+          //将表单用户名效验状态从成功更新到失败，并且给用户提示
+          // alert("用户名不存在");
+          $("#form").data("bootstrapValidator").updateStatus("username","INVALID","callback");
+        }
+        if(info.error===1001){
+          // alert("密码错误");
+          $('#form').data("bootstrapValidator").updateStatus("password", "INVALID", "callback");
+        }
+      }
+    })
+  })
+
+
+  //添加重置功能 在表单插件中 有input的选中状态需要重置 而在插件中有resetform这个方法可以重置
+  $('[type="reset"]').click(function(){
+    //resetForm(boolean);
+    // 传true，表示将表单内容和效验状态都重置
+    // 传false，表示只重置效验状态
+    $('#form').data("bootstrapValidator").resetform();
+  })
+  
 })
