@@ -21,7 +21,7 @@
         <ul>
           <li><a href="user.html"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>
           <li><a href="javascript:;" class="cate"><i class="glyphicon glyphicon-list"></i> 分类管理</a>
-              <div class="child">
+              <div class="child" style="display: none;">
                 <a href="first.html">一级分类</a>
                 <a href="second.html">二级分类</a>
               </div>
@@ -44,7 +44,9 @@
           </ol>
           <!-- 内容区域 -->
           <div class="lt-content">
-
+            <!-- 使用echarts 插入可视化的图片数据需要一个固定宽高的盒子放 -->
+            <div class="echarts-1 pull-left"></div>
+            <div class="echarts-2 pull-right"></div>
           </div>
       </div>
     </div>
@@ -66,16 +68,18 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
               <button type="button" class="btn btn-primary" id="logoutBtn">确定</button>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+          </div>
+        </div>
+      </div>
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/echarts/echarts.min.js"></script>
 <script src="js/checkLogin.js"></script>
 <script src="js/common.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

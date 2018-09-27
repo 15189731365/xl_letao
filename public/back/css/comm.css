@@ -70,9 +70,9 @@ ul {
   line-height: 40px;
   border-left: 3px solid transparent;
 }
-.lt-aside .aside-b ul .child {
+/* .lt-aside .aside-b ul .child {
   display: none;
-}
+} */
 .lt-aside .aside-b ul .child a {
   padding-left: 60px;
 }
@@ -108,7 +108,7 @@ ul {
 .lt-main {
   padding-left: 180px;
   padding-top: 50px;
-  background-color: skyblue;
+  /* background-color: skyblue; */
   height: 1000px;
   transition: all 1s;
 }
@@ -117,4 +117,15 @@ ul {
 }
 .lt-main .breadcrumb {
   margin-top: 20px;
+}
+
+.echarts-1 {
+  width: 48%;
+  height: 400px;
+  background-color: skyblue;
+}
+.echarts-2 {
+  width: 48%;
+  height: 400px;
+  background-color: skyblue;
 }
