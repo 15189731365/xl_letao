@@ -1,3 +1,15 @@
+/* 一些全局变量操作的样式 */
+a:active,
+a:hover,
+a:link,
+a:active {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .body_bg {
   background-color: #222D32;
 }
@@ -7,4 +19,102 @@
 }
 .mt-150 {
   margin-top: 150px;
+}
+.red {
+  color: #A94442;
+}
+/* 首页侧边栏 */
+.lt-aside {
+  width: 180px;
+  height: 100%;
+  background-color: #222D32;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transition: all 1s;
+}
+.lt-aside.current {
+  left:-180px;
+}
+.lt-aside .aside-t {
+  width: 100%;
+  height: 50px;
+  background-color: #367FA9;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.lt-aside .aside-b img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.lt-aside .aside-b p {
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  line-height: 40px;
+  font-size: 18px;
+}
+.lt-aside .aside-b ul a {
+  display: block;
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding-left: 40px;
+  line-height: 40px;
+  border-left: 3px solid transparent;
+}
+.lt-aside .aside-b ul .child {
+  display: none;
+}
+.lt-aside .aside-b ul .child a {
+  padding-left: 60px;
+}
+.lt-aside .aside-b ul a.current {
+  background-color: #1D1F21;
+  border-left: 3px solid #006699;
+}
+
+/* 右边主体部分 */
+.main-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #3C8DBC;
+  padding-left: 180px;
+  z-index: 666;
+  transition: all 1s;
+}
+.main-bar.current {
+  padding-left: 0px;
+}
+.main-bar a {
+  width: 50px;
+  height: 50px;
+  display: block;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+}
+.lt-main {
+  padding-left: 180px;
+  padding-top: 50px;
+  background-color: skyblue;
+  height: 1000px;
+  transition: all 1s;
+}
+.lt-main.current {
+  padding-left:0px;
+}
+.lt-main .breadcrumb {
+  margin-top: 20px;
 }
