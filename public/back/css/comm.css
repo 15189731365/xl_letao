@@ -5,6 +5,12 @@ a:link,
 a:active {
   text-decoration: none;
 }
+.table.table-bordered tr th,
+.table.table-bordered tr td {
+  text-align: center;
+  /* 表格中垂直对齐方式 */
+  vertical-align: middle;
+}
 ul {
   list-style: none;
   margin: 0;
