@@ -61,11 +61,11 @@ $(function(){
         if(info.success){
           location.href="index.html";
         }
-        if(info.error===10000){
+        if(info.error===1000){
           //进行单独配置样式
           $('#form').data("bootstrapValidator").updateStatus("username", "INVALID", "callback");
         }
-        if(info.error===10001){
+        if(info.error===1001){
           $('#form').data("bootstrapValidator").updateStatus("password", "INVALID", "callback")
         }
       }

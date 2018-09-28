@@ -17,7 +17,7 @@
     <img src="images/02.jpg" alt="">
     <p>超级管理员</p>
     <ul>
-      <li><a href="user.html"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+      <li><a href="user.html" class="current"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
       <li><a href="javascript:;" class="cate"><i class="glyphicon glyphicon-list"></i>分类管理</a>
         <div class="child" style="display: none">
           <a href="first.html">一级分类</a>
@@ -34,19 +34,33 @@
       <a href="javascript:;" class="pull-right icon-logout"><i class="glyphicon glyphicon-log-out"></i></a>
     </div>
     <div class="container-fluid">
-      <!-- 面包屑导航 -->
       <ol class="breadcrumb">
         <li><a href="#">管理系统</a></li>
 
-        <li class="active">首页</li>
+        <li class="active">用户管理</li>
       </ol>
-      <div class="lt-content">
-        <!-- 使用可视化插件的时候需要给定一个宽高的容器 -->
-        <div class="echarts-1 pull-left">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 通过模板渲染引擎来添加 -->
+        </tbody>
+      </table>
+      <div class="text-right">
+        <!-- 准备一个ul来存放分页的盒子 -->
+          <ul class="paginator pull-right" >
 
-        </div>
-        <div class="echarts-2 pull-right"></div>
+            </ul>
       </div>
+      
+      
     </div>
     
   </div>
@@ -69,13 +83,32 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+  <script type="text/html" id="tmp">
+    {{each rows v i}}
+    <tr>
+        <td>{{(i+1)+(page-1)*size}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <!-- isDelete来判断按钮的状态 0 表示已禁用 1 表示已启用 -->
+
+        <td>{{v.isDelete==1?"正常":"已禁用"}}</td>
+        {{if v.isDelete==1}}
+        <td><button class="btn btn-danger">禁用</button></td>
+        {{/if}}
+        {{if v.isDelete==0}}
+        <td><button class="btn btn-success">启用</button></td>
+        {{/if}}
+    </tr>
+    {{/each}}
+  </script>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
-  <script src="lib/echarts/echarts.min.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
   <script src="js/loginCheck.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

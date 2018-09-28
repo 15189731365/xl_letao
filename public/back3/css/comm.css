@@ -1,3 +1,19 @@
+
+a:hover,
+a:active,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  text-align: center;
+  vertical-align: middle;
+}
 .bg {
   background-color: #222D32;
 }
@@ -8,3 +24,115 @@
   text-align: center;
   line-height: 40px;
 }
+/* 模态框字体颜色 */
+.red {
+  color: #A94442;
+}
+
+/* 左边侧边栏 */
+.lt-aside {
+  width: 180px;
+  height: 100%;
+  background-color: #222D32;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transition: all 1s;
+}
+.lt-aside.current {
+  left: -180px;
+}
+.lt-aside .title {
+  width: 180px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #367FA9;
+}
+.lt-aside .title a {
+  color: white;
+  font-size: 25px;
+}
+.lt-aside img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.lt-aside p {
+  text-align: center;
+  color:white;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+}
+.lt-aside ul li i {
+  margin-right: 6px;
+}
+.lt-aside ul li a {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  border-left: 3px solid transparent;
+  color: white;
+}
+.lt-aside ul li a.current {
+  background-color: #1D1F21;
+  border-left: 3px solid #006699;
+}
+.lt-aside ul li .child a {
+  padding-left: 60px;
+}
+
+/* 右边主体 */
+.main-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 180px;
+  background-color: #3C8DBC;
+  height: 50px;
+  z-index: 666;
+  transition: all 1s;
+}
+.main-bar.current {
+  padding:0px;
+}
+.main-bar a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: white;
+}
+.lt-main {
+  padding-left: 180px;
+  padding-top: 50px;
+  height: 1000px;
+  width: 100%;
+  transition: all 1s;
+}
+.lt-main.current {
+  padding-left: 0px;
+}
+.breadcrumb {
+  margin-top: 20px;
+}
+.lt-content .echarts-1 {
+  width: 48%;
+  height: 400px;
+
+}
+.lt-content .echarts-2 {
+  width: 48%;
+  height: 400px;
+  
+}
+
