@@ -11,7 +11,15 @@
   <link rel="stylesheet" href="css/comm.css">
 </head>
 <body>
+<!--
+  // 原生同步文件上传:
+     1. 使用 input:file, 里面指定 name
+     2. 给 form 表单指定, method="post", enctype="multipart/form-data"
+     3. 在后台就可以通过 $_FILES 进行接收
+     原生同步方式是会发生页面跳转的, 而且如果是大文件, 会导致页面卡顿, 用户体验不好
 
+  // 异步文件上传, XHR2.0, formData
+-->
     <!-- 左侧栏 -->
     <div class="lt-aside">
       <div class="aside-t"><p>黑马26期</p></div>
@@ -45,10 +53,77 @@
           </ol>
           <!-- 内容区域 -->
           <div class="lt-content">
-
+              <div class="btn btn-default mb-20" id="addBtn">添加分类</div>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>序号</th>
+                    <th>一级分类</th>
+                    <th>二级分类</th>
+                    <th>二级分类LOGO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+              <ul id="paginator"></ul>
           </div>
       </div>
     </div>
+
+    <!-- 添加的模态框 -->
+<div class="modal fade" tabindex="-1" id="addModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <form id="form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title">添加分类</h4>
+        </div>
+
+        <div class="modal-body">
+          <!-- 在 bootstrap 中使用 表单元素, 一行的外层需要套一个 form-group -->
+          <!-- 使用隐藏域来实现一些不能出现的数据的提交 -->
+          <div class="form-group">
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    <span class="one">请选择一级分类</span> 
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <!-- 渲染数据 -->
+                  </ul>
+              </div>
+              <input type="hidden" name="categoryId" >
+              <input type="hidden" name="hot" value="1">
+          </div>
+          <div class="form-group" >
+            <input type="text" name="categoryName" class="form-control" placeholder="请输入二级分类">
+          </div>
+          <div class="form-group" >
+            <label for="fileupload" class="btn btn-default">
+              <!-- 想要点击上传图片 是需要 input file框的 不然是没有办法上传的 -->
+             上传图片
+            </label>
+            
+            <input id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic" style="display: none">
+          </div>
+
+          <div class="form-group" id="img-box">
+            <img src="images/default.png" width="100" height="100" alt="">
+            <input type="hidden" name="brandLogo">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" id="add">添加</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
     <!-- 模态框 插件中的模态框默认是关闭的 需要注册点击事件 来打开 模态框的大小有三种 可以自己来进行旋转
       data-dismiss="modal" 用来关闭模态框
@@ -69,14 +144,36 @@
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+      </div>
+<!-- 渲染第二分页的数据 -->
+<script type="text/html" id="secondtmp">
+  {{each rows v i}}
+  <tr>
+      <td>{{i+1+(page-1)*size}}</td>
+      <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td><img src="{{v.brandLogo}}" height="50" alt=""></td>
+    </tr>
+  {{/each}}
+</script>
+<!-- 渲染下拉框的数据 -->
+<script type="text/html" id="droptmp">
+{{each rows v i}}
+<li><a href="#" data-id="{{v.id}}">{{v.categoryName}}</a></li>
+{{/each}}
+</script>
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="js/checkLogin.js"></script>
 <script src="js/common.js"></script>
+<script src="js/second.js"></script>
 
 </body>
 </html>
