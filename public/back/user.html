@@ -58,8 +58,11 @@
                 <!-- 用模板引擎来渲染 -->
               </tbody>
             </table>
-           <!-- 分页插件 3.x版本时需要先 准备一个ul -->
-            <ul id="paginator"></ul>
+            <div class="text-right">
+                <!-- 分页插件 3.x版本时需要先 准备一个ul -->
+                <ul id="paginator"></ul>
+            </div>
+           
           </div>
       </div>
     </div>
@@ -67,7 +70,7 @@
     <!-- 模态框 插件中的模态框默认是关闭的 需要注册点击事件 来打开 模态框的大小有三种 可以自己来进行旋转
       data-dismiss="modal" 用来关闭模态框
     -->
-    <div class="modal fade" tabindex="-1" id="logout">
+    <div class="modal fade" tabindex="-1" id="userModal">
         <div class="modal-dialog modal-sm" >
           <div class="modal-content">
             <div class="modal-header">
@@ -75,11 +78,11 @@
               <h4 class="modal-title">温馨提示</h4>
             </div>
             <div class="modal-body">
-              <p class="red"> <i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？&hellip;</p>
+              <p class="red"> <i class="glyphicon glyphicon-info-sign"></i>  你确定要执行此操作吗？&hellip;</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary" id="logoutBtn">确定</button>
+              <button type="button" class="btn btn-primary" id="userbtn">确定</button>
             </div>
           </div>
         </div>
@@ -93,12 +96,14 @@
     <!-- 根据isDelete来进行判断  0为已禁用  1为已启用 -->
    
     <td>{{v.isDelete==1?"正常":"已禁用"}}</td>
+  <td data-id="{{v.id}}">
     {{if v.isDelete==1}}
-    <td><button class="btn btn-danger">禁用</button></td>
+    <button class="btn btn-danger">禁用</button>
     {{/if}}
     {{if v.isDelete==0}}
-    <td><button class="btn btn-success">启用</button></td>
+    <button class="btn btn-success">启用</button>
     {{/if}}
+  </td>
   </tr>
   {{/each}}
 </script>
