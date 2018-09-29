@@ -99,7 +99,7 @@ $(function(){
     //resetForm(boolean);
     // 传true，表示将表单内容和效验状态都重置
     // 传false，表示只重置效验状态
-    $('#form').data("bootstrapValidator").resetform();
+    $('#form').data("bootstrapValidator").resetForm();
   })
   
 })

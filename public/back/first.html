@@ -45,7 +45,7 @@
           </ol>
           <!-- 内容区域 -->
           <div class="lt-content">
-            <div class="btn btn-default mb-20">添加分类</div>
+            <div class="btn btn-default mb-20" id="addBtn">添加分类</div>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -68,23 +68,32 @@
     <!-- 模态框 插件中的模态框默认是关闭的 需要注册点击事件 来打开 模态框的大小有三种 可以自己来进行旋转
       data-dismiss="modal" 用来关闭模态框
     -->
-    <div class="modal fade" tabindex="-1" id="logout">
+    <form id="form">
+     <div class="modal fade" tabindex="-1" id="addModal">
         <div class="modal-dialog modal-sm" >
           <div class="modal-content">
+              
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" ><span >&times;</span></button>
-              <h4 class="modal-title">温馨提示</h4>
+              <h4 class="modal-title">添加分类</h4>
             </div>
             <div class="modal-body">
-              <p class="red"> <i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？&hellip;</p>
+              
+                <div class="form-group">
+                  
+                  <input type="text" class="form-control" name="categoryName"  placeholder="请输入一级分类">
+                </div>
+              
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary" id="logoutBtn">确定</button>
+              <button type="submit" class="btn btn-primary" id="add">添加</button>
             </div>
+          
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
+    </form>
 <script type="text/html" id="firtmp">
   {{each rows v i}}
   <tr>
