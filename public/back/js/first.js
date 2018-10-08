@@ -58,7 +58,7 @@ $("#form").bootstrapValidator({
    }
  }
 });
-//验证之后 注册表单验证成功事件，发送ajax请求之前 需要先住着其默认事件 
+//验证之后 注册表单验证成功事件，发送ajax请求之前 需要先阻止其默认事件 
 $("#form").on("success.form.bv",function(e){
  e.preventDefault();
  //发送ajax请求
