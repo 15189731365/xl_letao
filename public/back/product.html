@@ -44,7 +44,7 @@
           </ol>
           <!-- 内容区域 -->
           <div class="lt-content">
-            <button class="btn btn-default mb-20">添加商品</button>
+            <button class="btn btn-default mb-20" id="addPro">添加商品</button>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -60,13 +60,92 @@
               <tbody>
                 <!-- 通过模板引擎渲染来添加数据 -->
               </tbody>
-              <ul id="paginator">
-
-              </ul>
+              
             </table>
+          <div class="text-right">
+
+            
+            <ul id="paginator">
+
+            </ul>
+          </div>
           </div>
       </div>
     </div>
+
+
+    <!-- 模态框 添加商品的模态框 -->
+
+    <div class="modal fade" tabindex="-1" id="addModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <form id="form">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              <h4 class="modal-title">添加商品</h4>
+            </div>
+            <div class="modal-body">
+                
+                    <div class="form-group">
+                      
+                      
+                          <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true">
+                                <span class="two">请选择二级分类</span>
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                  <!-- 通过模板引擎来渲染 -->
+                              </ul>
+                          </div>
+                          <!-- 归属的品牌id -->
+                          <input type="hidden" name="brandId">
+                            <!-- 是否上架, 默认上架 statu: 1-->
+                          <input type="hidden" name="statu" value="1">
+                    </div>
+                    <div class="form-group">
+                      
+                        <input type="text" class="form-control" placeholder="请输入商品名称" name="proName">
+                      
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" name="proDesc" placeholder="请输入商品描述"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="num" placeholder="请输入商品库存">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="size" placeholder="请输入商品尺码">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="oldPrice" placeholder="请输入商品原价">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="price" placeholder="请输入商品现价">
+                    </div>
+                    <div class="form-group">
+                      <!-- 文件上传只能用input file框 使用label来关联两个 将input隐藏起来 -->
+                      <label for="fileupload" class="btn btn-default">上传图片</label>
+                      <!-- name指定图片上传时的name属性 -->
+                      <!-- data-url指定图片上传时的接口地址 -->
+                      <!-- multiple指定多文件上传 -->
+                      <input id="fileupload" type="file" name="pic1" style="display: none" data-url="/product/addProductPic" multiple>
+                    </div>
+                    <div class="form-group" id="img-box">
+                      
+                        <!-- <img src="images/default.png" width="100" height="100" alt=""> -->
+                     
+                      <input type="hidden" name="picStatu">
+                    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
 
     <!-- 模态框 插件中的模态框默认是关闭的 需要注册点击事件 来打开 模态框的大小有三种 可以自己来进行旋转
       data-dismiss="modal" 用来关闭模态框
@@ -85,10 +164,12 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
               <button type="button" class="btn btn-primary" id="logoutBtn">确定</button>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+          </div>
+        </div>
+      </div>
 
+
+<!-- 渲染商品 -->
 <script type="text/html" id="proTmp">
   {{each rows v i}}
     <tr>
@@ -116,7 +197,18 @@
   {{/each}}
 </script>
 
+
+<!-- 渲染二级菜单 -->
+<script type="text/html" id="addTmp">
+  {{each rows v i}}
+  <li><a href="#" data-id="{{v.id}}">{{v.brandName}}</a></li>
+  {{/each}}
+</script>
+
+
 <script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
