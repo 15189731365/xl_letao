@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="lib/mui/css/mui.css">
+  <!-- 引入字体图标库 -->
+  <link rel="stylesheet" href="lib/fa/css/font-awesome.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+  <div class="lt-container">
+    <!-- 头部区域 -->
+    <div class="lt-header">
+      <a href="javascript:history.go(-1);" class="left"><i class="mui-icon mui-icon-back"></i></a>
+      <h3>搜索中心</h3>
+  
+    </div>
+    <!-- 内容区域 -->
+    <div class="lt-main">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+              <!-- 搜索框 -->
+              <div class="search-input">
+                <input type="text" placeholder="请输入关键词" class="search">
+                <button class="mui-btn mui-btn-primary search-btn">搜索</button>
+              </div>
+              <!-- 历史记录 -->
+              <div class="lt-history">
+                <!-- 挖个坑之后进行渲染 -->
+
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部区域 -->
+    <div class="lt-footer">
+      <ul class="mui-clearfix">
+        <li class="current"><a href="index.html"><i class="fa fa-home"></i><p>首页</p></a></li>
+        <li><a href="category.html"><i class="fa fa-bars"></i><p>分类页</p></a></li>
+        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i><p>首页</p></a></li>
+        <li><a href="user.html"><i class="fa fa-user"></i><p>用户中心</p></a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- 通过模板引擎来渲染整个历史记录 -->
+  <script type="text/html" id="searchTmp">
+    <!-- 需要对整个历史记录进行判断 如果数组里是没有数据的 那么就用文本来代替 -->
+    {{if arr.length==0}}
+    <p>没有更多数据了 </p>
+    {{else}}
+    <div class="title">
+        <span class="mui-pull-left left">搜索历史</span>
+        <span class="mui-pull-right right"><i class="fa fa-trash"></i>清空记录</span>
+      </div>
+      <div class="content">
+        <ul>
+          {{each arr v i}}
+          <li><a href="" class="mui-pull-left">{{v}}</a><i data-index="{{i}}" class="mui-icon mui-icon-closeempty mui-pull-right icon-empty"></i></li>
+          {{/each}}
+
+        </ul>
+      </div>
+    {{/if}}
+  </script>
+
+  <script src="lib/mui/js/mui.js"></script>
+  <script src="lib/zepto/zepto.min.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

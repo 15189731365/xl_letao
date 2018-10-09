@@ -94,3 +94,23 @@ html,body {
   /* 由于里面的框架是采用绝对定位的方式写的 所以如果想要在父容器里面 需要 在父容器中加上相对定位 */
   position: relative;
 }
+
+/* 公共的输入框的样式 */
+/* 搜索框 */
+.search-input {
+  padding: 10px;
+  position: relative;
+}
+.search-input input {
+  margin: 0;
+  height: 34px;
+  font-size: 12px;
+  border: 1px solid #007AFF;
+  border-radius: 5px;
+}
+.search-input .search-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 0 5px 5px 0;
+}
