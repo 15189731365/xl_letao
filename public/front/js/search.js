@@ -67,7 +67,8 @@ $(function(){
     //渲染完之后 应该将输入框的文本清空
     $(".search-input input").val("");
     //需要跳转到商品列表页面
-    location.href="searchList.html";
+    // 跳转的商品页面 应该是根据搜索页面提供的值来进行搜索渲染出来的 所以在搜索页面需要进行传递数据 可以使用url地址栏拼接的方式来传递 在地址栏中的数据可以通过location.search得到'?key=value'这样的形式 再通过字符串的拼接来获取到数据；
+    location.href="searchList.html?key="+str;
   })
  
 

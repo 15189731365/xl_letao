@@ -1,1 +1,16 @@
-.lt-sort
+.lt-sort {
+  height: 30px;
+  background-color: #EEEEEE;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.lt-sort ul li {
+  float: left;
+  width: 25%;
+}
+.lt-sort ul li a {
+  display: block;
+  color: #666;
+}

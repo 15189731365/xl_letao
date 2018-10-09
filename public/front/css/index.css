@@ -6,24 +6,3 @@
   width: 33.3%;
 }
 
-.lt-product {
-  padding: 0 10px;
-}
-.lt-product ul li {
-  float: left;
-  width: 48%;
-  border: 1px solid #ccc;
-  text-align: center;
-  padding: 8px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-}
-.lt-product ul li:nth-child(2n-1){
-  margin-right: 4%;
-}
-.lt-product ul li span:first-child {
-  color: red;
-}
-.lt-product ul li span:last-child {
-  text-decoration: line-through;
-}
