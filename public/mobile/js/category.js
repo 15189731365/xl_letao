@@ -27,6 +27,7 @@ $(function() {
 
     // 获取 id, 根据 id, 渲染二级分类
     var id = $(this).data("id");
+    console.log(id);
     renderSecondById(id);
   });
 
