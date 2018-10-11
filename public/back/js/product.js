@@ -218,9 +218,9 @@ $("#form").on('success.form.bv', function (e) {
   // 通过表单提交的数据 只能是input里面的数据 三张图片的数据并不在input里面
   // 使用字符串拼接的方式来提交数据；
   var str=$("#form").serialize();
-  str+="&picName1"+picArr[0].picName+"$picAddr1"+picArr[0].picAddr;
-  str+="&picName2"+picArr[1].picName+"$picAddr2"+picArr[1].picAddr;
-  str+="&picName3"+picArr[2].picName+"$picAddr3"+picArr[2].picAddr;
+  str+="&picName1="+picArr[0].picName+"&picAddr1="+picArr[0].picAddr;
+  str+="&picName2="+picArr[1].picName+"&picAddr2="+picArr[1].picAddr;
+  str+="&picName3="+picArr[2].picName+"&picAddr3="+picArr[2].picAddr;
 
   $.ajax({
     type:"post",

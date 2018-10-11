@@ -137,3 +137,11 @@ html,body {
 .lt-product ul li span:last-child {
   text-decoration: line-through;
 }
+.lt-product img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+.lt-product .mui-ellipsis-2 {
+  height: 40px;
+}

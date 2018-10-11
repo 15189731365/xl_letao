@@ -31,53 +31,16 @@
               </div>
               <!-- 排序 -->
               <div class="lt-sort">
-                <ul class="mui-clearfix">
-                  <li><a href="">上架时间<i class="fa fa-angle-down"></i></a></li>
-                  <li><a href="">价格<i class="fa fa-angle-down"></i></a></li>
-                  <li><a href="">库存<i class="fa fa-angle-down"></i></a></li>
-                  <li><a href="">折扣<i class="fa fa-angle-down"></i></a></li>
-                </ul>
+                
+                  <a href="#">上架时间<i class="fa fa-angle-down"></i></a>
+                  <a href="#" data-type="price">价格<i class="fa fa-angle-down"></i></a>
+                  <a href="#" data-type="num">库存<i class="fa fa-angle-down"></i></a>
+                  <a href="#">折扣<i class="fa fa-angle-down"></i></a>
+               
               </div>
               <!-- 产品区域 -->
               <div class="lt-product">
-                <ul>
-                  <li>
-                    <img src="images/product.jpg" alt="">
-                    <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                    <p><span>&yen;560</span><span>&yen;580</span></p>
-                    <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                  <li>
-                      <img src="images/product.jpg" alt="">
-                      <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                      <p><span>&yen;560</span><span>&yen;580</span></p>
-                      <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                  <li>
-                      <img src="images/product.jpg" alt="">
-                      <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                      <p><span>&yen;560</span><span>&yen;580</span></p>
-                      <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                  <li>
-                      <img src="images/product.jpg" alt="">
-                      <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                      <p><span>&yen;560</span><span>&yen;580</span></p>
-                      <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                  <li>
-                      <img src="images/product.jpg" alt="">
-                      <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                      <p><span>&yen;560</span><span>&yen;580</span></p>
-                      <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                  <li>
-                      <img src="images/product.jpg" alt="">
-                      <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                      <p><span>&yen;560</span><span>&yen;580</span></p>
-                      <button class="mui-btn mui-btn-danger">立即购买</button>
-                  </li>
-                </ul>
+                <div class="loading"></div>
               </div>
             </div>
         </div>
@@ -94,31 +57,29 @@
     </div>
   </div>
 
-  <!-- 通过模板引擎来渲染整个历史记录 -->
-  <script type="text/html" id="searchTmp">
-    <!-- 需要对整个历史记录进行判断 如果数组里是没有数据的 那么就用文本来代替 -->
-    {{if arr.length==0}}
-    <p>没有更多数据了 </p>
-    {{else}}
-    <div class="title">
-        <span class="mui-pull-left left">搜索历史</span>
-        <span class="mui-pull-right right"><i class="fa fa-trash"></i>清空记录</span>
-      </div>
-      <div class="content">
-        <ul>
-          {{each arr v i}}
-          <li><a href="" class="mui-pull-left">{{v}}</a><i data-index="{{i}}" class="mui-icon mui-icon-closeempty mui-pull-right icon-empty"></i></li>
-          {{/each}}
+  <!-- 渲染商品 -->
+  <script type="text/html" id="tmp">
+    <ul>
 
-        </ul>
-      </div>
-    {{/if}}
+    
+    {{each data v i}}
+    <li>
+      <a href="product.html?productId={{v.id}}">
+      <img src="{{v.pic[0].picAddr}}" alt="">
+      <p class="mui-ellipsis-2">{{v.proName}} </p>
+      <p><span>&yen;{{v.price}}</span><span>&yen;{{v.oldPrice}}</span></p>
+      <button class="mui-btn mui-btn-danger">立即购买</button>
+      </a>
+    </li>
+    {{/each}}
+  </ul>
   </script>
 
   <script src="lib/mui/js/mui.js"></script>
   <script src="lib/zepto/zepto.min.js"></script>
   <script src="lib/artTemplate/template-web.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/searchList.js"></script>
 
 </body>
 </html>
